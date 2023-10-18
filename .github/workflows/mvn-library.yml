@@ -22,18 +22,18 @@ jobs:
     - name: Prepara MVN
       uses: s4u/maven-settings-action@v2.8.0
       with:
-      servers: |
-        [{
-          "id": "github",
-          "configuration": {
-            "httpHeaders": {
-              "property": {
-                "name": "Authorization",
-                "value": "Bearer ${{ github.token }}"
+        servers: |
+          [{
+            "id": "github",
+            "configuration": {
+              "httpHeaders": {
+                "property": {
+                  "name": "Authorization",
+                  "value": "Bearer ${{ github.token }}"
+                }
               }
             }
-          }
-        }]
+          }]
     
     - name: Set up JDK 8
       uses: actions/setup-java@v2
