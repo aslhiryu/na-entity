@@ -26,11 +26,14 @@ jobs:
         distribution: 'temurin'
         server-id: github  # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
-        
+        server-id: github # value of repository/id field of the pom.xml
+        server-username: USER_REF
+        server-password: TOKEN_REF
+          
     - name: Genera JAR 
-      run: mvn -B package -f pom.xml
+      run: mvn -B package -Pgithub -f pom.xml
 
     - name: Publica el JAR en GitHub Packages Apache Maven
-      run: mvn deploy -e -s $GITHUB_WORKSPACE/settings.xml -f pom.xml
+      run: mvn deploy -e -s $GITHUB_WORKSPACE/settings.xml -Pgithub -f pom.xml
       env:
         GITHUB_TOKEN: ${{ github.token }}
