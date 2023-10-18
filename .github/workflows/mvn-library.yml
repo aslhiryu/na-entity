@@ -24,7 +24,7 @@ jobs:
       with:
         servers: |
           [{
-            "id": "githubasl",
+            "id": "github",
             "configuration": {
               "httpHeaders": {
                 "property": {
