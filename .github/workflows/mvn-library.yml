@@ -18,6 +18,22 @@ jobs:
     steps:
     - name: Checkout codigo
       uses: actions/checkout@v2
+      
+    - name: Prepara MVN
+      uses: s4u/maven-settings-action@v2.8.0
+      with:
+      servers: |
+        [{
+          "id": "github",
+          "configuration": {
+            "httpHeaders": {
+              "property": {
+                "name": "Authorization",
+                "value": "Bearer ${{ github.token }}"
+              }
+            }
+          }
+        }]
     
     - name: Set up JDK 8
       uses: actions/setup-java@v2
@@ -33,6 +49,6 @@ jobs:
       run: mvn -B package -Pgithub -f pom.xml
 
     - name: Publica el JAR en GitHub Packages Apache Maven
-      run: mvn deploy -e -s $GITHUB_WORKSPACE/settings.xml -Pgithub -f pom.xml
+      run: mvn deploy -e -Pgithub -f pom.xml
       env:
         GITHUB_TOKEN: ${{ github.token }}
