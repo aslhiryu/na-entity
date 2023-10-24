@@ -1,5 +1,6 @@
 package neoatlantis.entity.objects;
 
+import neoatlantis.utils.catalogs.objects.OrderMode;
 import neoatlantis.entity.SimpleEntity;
 
 /**
