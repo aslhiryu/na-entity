@@ -42,8 +42,6 @@ jobs:
         distribution: 'temurin'
         server-id: github  # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
-#        server-username: USER_REF
-#        server-password: TOKEN_REF
           
     - name: Genera JAR 
       run: mvn -B package -Pgithubasl -f pom.xml
